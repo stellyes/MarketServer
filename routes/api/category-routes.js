@@ -60,6 +60,7 @@ router.put("/:id", async (req, res) => {
       res.status(404).json({
         message: "Error: no category associated with the provided id",
       });
+      return;
     }
 
     res.status(200).json(categoryData);
@@ -81,6 +82,7 @@ router.delete("/:id", async (req, res) => {
       res.status(404).json({
         message: "Error: no category associated with the provided id",
       });
+      return;
     }
 
     res.status(200).json(categoryData);
