@@ -8,10 +8,7 @@ router.get("/", async (req, res) => {
   // be sure to include its associated Product data
   try {
     const tagData = await Tag.findAll({
-      include: [
-        { model: Product, attributes: ["product_name", "price", "stock"] },
-        { model: ProductTag, attributes: ["tag_name"] },
-      ],
+      include: [{ model: Product }, { model: ProductTag }],
     });
 
     res.status(200).json(tagData);
@@ -69,7 +66,10 @@ router.put("/:id", async (req, res) => {
       return;
     }
 
-    res.status(200).json(tagData);
+    res.status(200).json({
+      message: `Tag succesfully updated in database with response code ${tagData}`,
+      payload: req.body,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -91,7 +91,10 @@ router.delete("/:id", async (req, res) => {
       return;
     }
 
-    res.status(200).json(tagData);
+    res.status(200).json({
+      message: `Tag succesfully deleted in database with response code ${tagData}`,
+      payload: `Tag ID - ${req.params.id}`,
+    });
   } catch (err) {
     res.status(500).json(err);
   }

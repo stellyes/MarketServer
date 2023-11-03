@@ -63,7 +63,10 @@ router.put("/:id", async (req, res) => {
       return;
     }
 
-    res.status(200).json(categoryData);
+    res.status(200).json({
+      message: `Category succesfully updated in database with response code ${tagData}`,
+      payload: req.body,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -85,7 +88,10 @@ router.delete("/:id", async (req, res) => {
       return;
     }
 
-    res.status(200).json(categoryData);
+    res.status(200).json({
+      message: `Category succesfully deleted in database with response code ${categoryData}`,
+      payload: `Category ID - ${req.params.id}`,
+    });
   } catch (err) {
     res.status(500).json(err);
   }

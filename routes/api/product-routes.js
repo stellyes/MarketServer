@@ -9,10 +9,7 @@ router.get("/", async (req, res) => {
   // be sure to include its associated Category and Tag data
   try {
     const productData = await Product.findAll({
-      include: [
-        { model: Category},
-        { model: Tag},
-      ],
+      include: [{ model: Category }, { model: Tag }],
     });
     res.status(200).json(productData);
   } catch (err) {
@@ -132,7 +129,10 @@ router.delete("/:id", async (req, res) => {
       return;
     }
 
-    res.status(200).json(productData);
+    res.status(200).json({
+      message: `Product succesfully deleted in database with response code ${productData}`,
+      payload: `Product ID - ${req.params.id}`,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
