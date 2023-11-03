@@ -2,9 +2,7 @@
 const { Model, DataTypes } = require("sequelize");
 // import our database connection from config.js
 const sequelize = require("../config/connection");
-const {
-  databaseVersion,
-} = require("../../../00-gitlab-repository/course-content/13-ORM/activities/26-Stu_Literals/Unsolved/config/connection");
+const { databaseVersion } = require("../config/connection");
 
 // Initialize Product model (table) by extending off Sequelize's Model class
 class Product extends Model {}
