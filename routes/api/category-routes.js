@@ -64,8 +64,7 @@ router.put("/:id", async (req, res) => {
     }
 
     res.status(200).json({
-      message: `Category succesfully updated in database with response code ${tagData}`,
-      payload: req.body,
+      message: `Category succesfully updated in database`,
     });
   } catch (err) {
     res.status(500).json(err);
